@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Basingstoke Nutrition — Personalised nutrition &amp; coaching</title>
+<meta name="description" content="Personalised nutrition, coaching, accountability and community in Basingstoke. Book a free Wellness Evaluation.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0a0a;--ink:#f3ede8;--mute:#9a908a;--line:rgba(243,237,232,.13);
+  --acc:#f2a384;--acc2:#8fbf8a;--glow:rgba(242,163,132,.35);
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--acc);color:#1a0d08}
+.label{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);margin-bottom:5vh;display:block}
+
+nav{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:26px;padding:10px 12px 10px 22px;border:1px solid var(--line);border-radius:100px;background:rgba(14,12,12,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .6s var(--ease);width:max-content;max-width:calc(100vw - 24px)}
+nav.hide{transform:translate(-50%,-160%)}
+.logo{font-family:var(--serif);font-size:20px;white-space:nowrap}.logo i{color:var(--acc)}
+.links{display:flex;gap:22px;font-size:13px;color:var(--mute)}.links a:hover{color:var(--ink)}
+.pill{padding:9px 18px;border-radius:100px;background:var(--ink);color:#150d0a;font-size:13px;font-weight:400;white-space:nowrap}
+@media(max-width:760px){.links{display:none}nav{gap:14px}}
+
+.btn{display:inline-flex;align-items:center;gap:12px;padding:17px 28px;border-radius:100px;font-size:15px;font-weight:400;transition:box-shadow .5s,transform .5s var(--ease)}
+.btn.p{background:var(--acc);color:#1a0d08}.btn.p:hover{box-shadow:0 0 60px 6px var(--glow);transform:translateY(-2px)}
+.btn.g{border:1px solid var(--line)}.btn.g:hover{border-color:var(--acc)}
+
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5vw 9vh;overflow:hidden;isolation:isolate}
+.aurora{position:absolute;inset:-20%;z-index:-1;filter:blur(70px)}
+.aurora b{position:absolute;border-radius:50%}
+.aurora b:nth-child(1){width:50vw;height:50vw;left:5%;top:5%;background:radial-gradient(circle,rgba(242,163,132,.4),transparent 65%);animation:d1 22s ease-in-out infinite alternate}
+.aurora b:nth-child(2){width:40vw;height:40vw;right:0;top:25%;background:radial-gradient(circle,rgba(143,191,138,.3),transparent 65%);animation:d2 28s ease-in-out infinite alternate}
+.aurora b:nth-child(3){width:30vw;height:30vw;left:40%;bottom:-10%;background:radial-gradient(circle,rgba(200,110,130,.25),transparent 65%);animation:d1 30s ease-in-out infinite alternate-reverse}
+@keyframes d1{to{transform:translate(12vw,8vh) scale(1.15)}}@keyframes d2{to{transform:translate(-14vw,-6vh) scale(.9)}}
+.eyebrow{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:14px;margin-bottom:3vh}
+.eyebrow::before{content:"";width:40px;height:1px;background:var(--acc)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,13vw,210px);line-height:.9;letter-spacing:-.035em}
+.ln{display:block;overflow:hidden;padding-bottom:.08em}
+.ln>span{display:block;transform:translateY(112%) rotate(3deg);transform-origin:left bottom;transition:transform 1.4s var(--ease)}
+.loaded .ln>span{transform:none}.ln:nth-child(2)>span{transition-delay:.12s}.ln:nth-child(3)>span{transition-delay:.24s}
+h1 em,h2 em{color:var(--acc);font-style:italic}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-top:6vh;flex-wrap:wrap}
+.hero-foot p{max-width:430px;color:#c2b8b1;font-size:clamp(15px,1.2vw,18px)}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.fade{opacity:0;transform:translateY(24px);filter:blur(8px);transition:all 1.4s var(--ease) .7s}
+.loaded .fade{opacity:1;transform:none;filter:none}
+
+.statement{padding:24vh 5vw 20vh}
+.statement p{font-family:var(--serif);font-size:clamp(32px,6vw,96px);line-height:1.05;letter-spacing:-.02em;max-width:18em}
+.w{display:inline-block;opacity:.14;filter:blur(8px);transition:opacity .5s,filter .5s;margin-right:.2em}
+.w.on{opacity:1;filter:none}.w.acc.on{color:var(--acc);font-style:italic}
+.sig{margin-top:6vh;color:var(--mute);font-size:14px}
+
+.hz{height:380vh;position:relative}
+.hz-in{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.hz-head{position:absolute;top:calc(12vh + env(safe-area-inset-top,0px));left:5vw;z-index:3}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5vw,76px);letter-spacing:-.02em;line-height:1}
+.hz-track{display:flex;gap:6vw;padding:0 8vw 0 5vw;will-change:transform;margin-top:10vh}
+.panel{flex:0 0 auto;width:min(62vw,780px);height:min(56vh,480px);border-top:1px solid var(--line);padding-top:24px;display:flex;flex-direction:column;justify-content:space-between}
+.panel .n{font-family:var(--serif);font-size:clamp(110px,19vw,280px);line-height:.8;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(243,237,232,.28);transition:color .8s var(--ease),-webkit-text-stroke-color .8s}
+.panel:hover .n{color:var(--acc);-webkit-text-stroke-color:var(--acc)}
+.panel h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,54px);line-height:1}
+.panel p{color:#b3a9a2;max-width:440px;margin-top:12px;font-size:clamp(14px,1.1vw,17px)}
+.progress{position:absolute;left:5vw;right:5vw;bottom:7vh;height:1px;background:var(--line)}
+.progress i{display:block;height:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+@media(max-width:760px){.panel{width:80vw;height:52vh}.hz{height:340vh}}
+
+.story{display:grid;grid-template-columns:1fr 1.1fr;gap:6vw;padding:16vh 5vw}
+.sticky{position:sticky;top:16vh;align-self:start}
+.story h2{font-size:clamp(44px,7vw,112px);line-height:.95;letter-spacing:-.03em}
+.steps{display:flex;flex-direction:column;gap:20vh;padding-top:8vh}
+.step{border-left:1px solid var(--line);padding-left:clamp(20px,3vw,48px);position:relative}
+.step::before{content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 20px var(--acc)}
+.step .big{font-family:var(--serif);font-size:clamp(70px,10vw,150px);line-height:.9;color:var(--acc);letter-spacing:-.04em}
+.step h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,44px);margin:14px 0 10px}
+.step p{color:#b3a9a2;max-width:440px}
+.reveal{opacity:0;transform:translateY(60px) scale(.97);filter:blur(12px);transition:all 1.3s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:none}
+@media(max-width:860px){.story{grid-template-columns:1fr}.sticky{position:relative;top:0}.steps{gap:12vh}}
+
+.price{padding:18vh 5vw}
+.price h2{margin-bottom:7vh}
+.row{display:grid;grid-template-columns:1.2fr 1.4fr .9fr;align-items:center;gap:3vw;padding:5vh 0;border-top:1px solid var(--line);position:relative;transition:padding .7s var(--ease)}
+.row:last-of-type{border-bottom:1px solid var(--line)}
+.row::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(242,163,132,.08),transparent);opacity:0;transition:opacity .6s}
+.row:hover::before{opacity:1}.row:hover{padding-left:2vw}
+.row h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.2vw,46px);line-height:1}
+.row p{color:#b3a9a2;font-size:15px}
+.row .amt{font-family:var(--serif);font-size:clamp(64px,10vw,160px);line-height:.85;text-align:right;letter-spacing:-.04em;transition:color .5s}
+.row:hover .amt{color:var(--acc)}.amt small{font-size:.35em;letter-spacing:0}
+@media(max-width:760px){.row{grid-template-columns:1fr;gap:10px}.row .amt{text-align:left;order:-1}}
+.note{margin-top:5vh;color:var(--mute);font-size:14px;max-width:620px}
+
+.trust{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust>div{padding:14vh 5vw}.trust>div+div{border-left:1px solid var(--line)}
+.areas{list-style:none}
+.areas li{font-family:var(--serif);font-size:clamp(34px,5.2vw,84px);line-height:1.05;letter-spacing:-.03em;color:rgba(243,237,232,.35);transition:color .5s,transform .7s var(--ease)}
+.areas li:hover{color:var(--acc);transform:translateX(18px)}.areas li.on{color:var(--ink)}
+.info p{padding:20px 0;border-top:1px solid var(--line);color:#c2b8b1}
+.info p:first-of-type{border-top:0}.info b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.2vw,32px);color:var(--ink);line-height:1.15}
+.info a{color:var(--acc)}
+@media(max-width:860px){.trust{grid-template-columns:1fr}.trust>div+div{border-left:0;border-top:1px solid var(--line)}.trust>div{padding:10vh 6vw}}
+
+.marquee{border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:3vh 0}
+.marquee div{display:inline-block;animation:mq 40s linear infinite;font-family:var(--serif);font-size:clamp(28px,4vw,56px);color:rgba(243,237,232,.3)}
+.marquee span{margin:0 2.4vw}.marquee i{color:var(--acc);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.final{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18vh 5vw 10vh;overflow:hidden;isolation:isolate}
+.final h2{font-size:clamp(48px,10vw,160px);line-height:.95;letter-spacing:-.035em;margin-bottom:4vh}
+.final p{color:#c2b8b1;max-width:460px;margin-bottom:5vh}
+.btn.xl{padding:22px 40px;font-size:17px}
+.tel{margin-top:4vh;font-family:var(--serif);font-size:clamp(22px,3vw,36px);color:var(--acc)}
+footer{padding:5vh 5vw 8vh;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+footer p{flex-basis:100%;max-width:640px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ln>span{transform:none}.fade,.reveal{opacity:1;transform:none;filter:none}.w{opacity:1;filter:none}}
+</style>
+</head>
+<body id="top">
+
+<nav id="nav">
+  <a class="logo" href="#top">Basingstoke <i>Nutrition</i></a>
+  <div class="links"><a href="#work">Approach</a><a href="#how">Process</a><a href="#results">Results</a><a href="#visit">Visit</a></div>
+  <a class="pill" href="#start">Free evaluation</a>
+</nav>
+
+<header class="hero">
+  <div class="aurora"><b></b><b></b><b></b></div>
+  <span class="eyebrow fade">Basingstoke · Health &amp; wellness</span>
+  <h1><span class="ln"><span>You don’t need</span></span><span class="ln"><span>another <em>Monday.</em></span></span><span class="ln"><span>Just a start.</span></span></h1>
+  <div class="hero-foot fade">
+    <p>Our mission is to help people in our local community live a happier and healthier lifestyle — with a plan, coaching, accountability and community built around you.</p>
+    <div class="cta-row">
+      <a class="btn p" href="#start">Book a free Wellness Evaluation <span>→</span></a>
+      <a class="btn g" href="#visit">Find us</a>
+    </div>
+  </div>
+</header>
+
+<section class="statement">
+  <span class="label">( 01 — Our story )</span>
+  <p id="stmt">For most of my life, I was a yo-yo dieter. I knew how to lose weight — I didn’t know how to stop fighting with it. <span class="acc">Now I’ve maintained it for 4½ years.</span></p>
+  <p class="sig">— Leanne, founder of Basingstoke Nutrition</p>
+</section>
+
+<section class="hz" id="work">
+  <div class="hz-in">
+    <div class="hz-head"><span class="label" style="margin-bottom:2vh">( 02 — Approach )</span><h2>We start<br>with <em>you</em></h2></div>
+    <div class="hz-track" id="hzT">
+      <article class="panel"><div class="n">01</div><div><h3>Your body</h3><p>Change your weight or body composition, improve your energy, get fitter and stronger — or simply feel better in yourself.</p></div></article>
+      <article class="panel"><div class="n">02</div><div><h3>Your lifestyle</h3><p>Holidays, meals out, real life and even perimenopause. A plan that fits the way you actually live.</p></div></article>
+      <article class="panel"><div class="n">03</div><div><h3>Your goals</h3><p>Personalised nutrition built around what you want — not another one-size-fits-all diet.</p></div></article>
+      <article class="panel"><div class="n">04</div><div><h3>Your community</h3><p>The plan, coaching, accountability and community to support you along the way. No pressure, no judgement.</p></div></article>
+    </div>
+    <div class="progress"><i id="hzP"></i></div>
+  </div>
+</section>
+
+<section class="story" id="how">
+  <div class="sticky">
+    <span class="label">( 03 — Process )</span>
+    <h2>Simple <em>to start.</em><br>Made to <em>last.</em></h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal"><div class="big">01</div><h3>Come and find out</h3><p>Been quietly watching our page, nervous or wondering if we’re really for you? Book a free Wellness Evaluation or join one of our Open Evenings.</p></div>
+    <div class="step reveal"><div class="big">02</div><h3>A plan around you</h3><p>We look at your body, your lifestyle and your goals, then build personalised nutrition that fits.</p></div>
+    <div class="step reveal"><div class="big">03</div><h3>Keep showing up</h3><p>Coaching, accountability and community alongside you. Progress, not perfection.</p></div>
+  </div>
+</section>
+
+<section class="price" id="results">
+  <span class="label">( 04 — Real people. Real life. Real results. )</span>
+  <h2>Progress you<br>can <em>measure.</em></h2>
+  <div class="row reveal"><h3>Rebekah</h3><p>A young single mum working full-time. Down 9.7kg (1st 7lb), 1.5 litres of visceral fat and 72cm — by consistency over perfection.</p><div class="amt">9.7<small>kg</small></div></div>
+  <div class="row reveal"><h3>Lisa</h3><p>Wanted to lose her tummy, boost her energy and find her motivation again. Down 4.1% body fat, 14 years of metabolic age and 55.5cm.</p><div class="amt">11<small>kg</small></div></div>
+  <div class="row reveal"><h3>Leanne</h3><p>Our founder lost around 1½ stone and two dress sizes — and has kept it off for 4½ years.</p><div class="amt">4½<small>yrs</small></div></div>
+  <p class="note">Individual results vary. Every plan is personalised to the person.</p>
+</section>
+
+<section class="trust" id="visit">
+  <div>
+    <span class="label">( 05 — Join in )</span>
+    <ul class="areas"><li class="on">Free Wellness Evaluation</li><li>Open Evenings</li><li>Coaching</li><li>Community</li></ul>
+  </div>
+  <div class="info">
+    <span class="label">( 06 — Find us )</span>
+    <p><b>Visit</b>Unit 1, Faraday Court, Rankine Road,<br>Basingstoke, RG24 8PF</p>
+    <p><b>Message us</b>WhatsApp, or Instagram <a href="https://www.instagram.com/leanne_colloby" target="_blank" rel="noopener">@leanne_colloby</a></p>
+    <p><b>Quick reply</b>Drop a message or comment INFO and we’ll have a chat.</p>
+  </div>
+</section>
+
+<div class="marquee"><div><span>Your body</span><i>✦</i><span>Your lifestyle</span><i>✦</i><span>Your goals</span><i>✦</i><span>Progress not perfection</span><i>✦</i><span>Your body</span><i>✦</i><span>Your lifestyle</span><i>✦</i><span>Your goals</span><i>✦</i><span>Progress not perfection</span><i>✦</i></div></div>
+
+<section class="final" id="start">
+  <div class="aurora"><b></b><b></b><b></b></div>
+  <span class="label">( 07 — Begin )</span>
+  <h2>Somewhere<br>to <em>start.</em></h2>
+  <p>Book a free Wellness Evaluation or come along to an Open Evening. No pressure, no judgement.</p>
+  <a class="btn p xl" href="https://www.instagram.com/leanne_colloby" target="_blank" rel="noopener">Message us to book <span>→</span></a>
+  <span class="tel">Comment “INFO” to chat</span>
+</section>
+
+<footer>
+  <span>© 2026 Basingstoke Nutrition · Unit 1, Faraday Court, Rankine Road, RG24 8PF</span>
+  <a href="#top">Back to top ↑</a>
+  <p>Results shown are individual and not typical of everyone. Speak to your GP before making significant changes to your diet if you have a medical condition.</p>
+</footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+requestAnimationFrame(()=>setTimeout(()=>document.body.classList.add('loaded'),150));
+const nav=$('#nav');let lastY=0;
+const st=$('#stmt');
+st.innerHTML=st.innerHTML.replace(/(<span class="acc">)([\s\S]*?)(<\/span>)|([^<\s]+)/g,(m,a,b,c,d)=>{
+  if(a)return b.trim().split(/\s+/).map(w=>`<span class="w acc">${w}</span>`).join(' ')+' ';
+  return d?`<span class="w">${d}</span> `:m});
+const words=$$('.w'),hz=$('.hz'),hzT=$('#hzT'),hzP=$('#hzP');
+let ticking=false;
+function onScroll(){
+  const y=scrollY;
+  nav.classList.toggle('hide',y>lastY&&y>200);lastY=y;
+  const t=innerHeight*.82;
+  words.forEach(w=>w.classList.toggle('on',w.getBoundingClientRect().top<t));
+  const r=hz.getBoundingClientRect();
+  const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
+  hzT.style.transform=`translate3d(${-p*Math.max(0,hzT.scrollWidth-innerWidth)}px,0,0)`;
+  hzP.style.transform=`scaleX(${p})`;
+  ticking=false;
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+addEventListener('resize',onScroll);onScroll();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+$$('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*.08+'s';io.observe(el)});
+})();
+</script>
+</body>
+</html>
